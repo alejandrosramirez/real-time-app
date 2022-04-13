@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Chat\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,14 @@ Route::get('/dashboard', function () {
 Route::get('/game', function () {
     return view('game');
 })->middleware(['auth'])->name('game');
+
+Route::get('/chat', function () {
+    return view('chat');
+})->middleware(['auth'])->name('chat');
+
+Route::prefix('chat')->controller(ChatController::class)->group(function () {
+    Route::post('/', 'store');
+    Route::post('/greet/{user}', 'greet');
+});
 
 require __DIR__.'/auth.php';
