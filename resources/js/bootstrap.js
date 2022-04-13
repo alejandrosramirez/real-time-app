@@ -24,5 +24,9 @@ window.Echo = new Echo({
     broadcaster: "pusher",
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    forceTLS: true,
+    wsHost: 'new-real-time-app.develop',
+    wsPort: 80,
+    forceTLS: false,
+    encrypted: false,
+    disableStats: true,
 });
